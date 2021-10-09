@@ -4,10 +4,30 @@
   box-sizing: border-box;
 }
 
-.wrapper {
-  margin: 0 auto;
+.app-wrapper {
   display: grid;
+  margin: 0 auto;
+  width: 1200px;
+  grid-template-areas: "head head" "nav cont";
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
 }
 
 .header {
+  grid-area: head;
+  background-color: antiquewhite;
+}
+
+.header img {
+  height: 60px;
+}
+
+.nav {
+  grid-area: nav;
+  background-color: rgb(172, 214, 214);
+}
+
+.content {
+  grid-area: cont;
+  background-color: azure;
 }
