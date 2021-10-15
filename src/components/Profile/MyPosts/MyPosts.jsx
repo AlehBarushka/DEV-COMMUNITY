@@ -1,5 +1,5 @@
-import styles from "./MyPosts.module.css";
-import Post from "./Posts/Post";
+import styles from './MyPosts.module.css';
+import Post from './Posts/Post';
 
 const MyPosts = () => {
   return (
@@ -10,12 +10,8 @@ const MyPosts = () => {
         <button>Add Post</button>
       </div>
       <div className={styles.posts}>
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        <Post message="Hi, how are you?" likes="15" />
+        <Post message="It's my first post" likes="20" />
       </div>
     </div>
   );

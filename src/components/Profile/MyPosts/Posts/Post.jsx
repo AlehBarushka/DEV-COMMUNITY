@@ -1,13 +1,11 @@
-import styles from "./Post.module.css";
+import styles from './Post.module.css';
 
-const Post = () => {
+const Post = (props) => {
   return (
     <div className={styles.item}>
       <img src="https://www.blexar.com/avatar.png" alt="ava" />
-      post 1
-      <div>
-        <span>Like</span>
-      </div>
+      {props.message}
+      <div>{props.likes} likes</div>
     </div>
   );
 };
