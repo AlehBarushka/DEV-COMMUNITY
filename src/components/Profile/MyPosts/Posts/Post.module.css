@@ -1,5 +1,6 @@
 .item {
-  color: bisque;
+  color: rgb(85, 83, 81);
+  margin-top: 10px;
 }
 .item img {
   max-width: 50px;

@@ -3,11 +3,11 @@
   grid-template-columns: 2fr 10fr;
 }
 
-.dialogs-items {
+.dialog-items {
   padding: 10px;
 }
 
-.dialogs-items .active {
+.dialog-items .active {
   color: rgb(117, 54, 48);
 }
 

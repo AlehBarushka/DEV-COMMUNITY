@@ -1,7 +1,7 @@
-import styles from "./Music.module.css";
+import styles from './Music.module.css';
 
 const Music = (props) => {
-  return <div>Misic</div>;
+  return <div>Music</div>;
 };
 
 export default Music;

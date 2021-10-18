@@ -8,14 +8,14 @@
   display: grid;
   margin: 0 auto;
   width: 1200px;
-  grid-template-areas: "head head" "nav cont";
+  grid-template-areas: 'head head' 'nav cont';
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
 }
 
 .app-wrapper-content {
   grid-area: cont;
-  background-color: rgb(151, 163, 157);
+  background-color: rgba(140, 160, 156, 0.541);
 }
 
 .app-wrapper-content img {
