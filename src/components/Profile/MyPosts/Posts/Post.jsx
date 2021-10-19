@@ -4,7 +4,7 @@ const Post = (props) => {
   return (
     <div className={styles.item}>
       <img src="https://www.blexar.com/avatar.png" alt="ava" />
-      {props.message}
+      <span>{props.message}</span>
       <div>{props.likes} likes</div>
     </div>
   );
