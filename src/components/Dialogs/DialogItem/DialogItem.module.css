@@ -1,0 +1,15 @@
+.dialog {
+  padding: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  border-radius: 5px;
+}
+
+.dialog a {
+  text-decoration: none;
+  color: rgb(33, 59, 75);
+  display: block;
+}
+
+.dialog .active {
+  color: rgb(117, 54, 48);
+}
