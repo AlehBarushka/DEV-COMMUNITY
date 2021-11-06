@@ -3,12 +3,12 @@ let state = {
         postsData: [
             {
                 id: 1,
-                messages: 'Hi, how are you?',
+                message: 'Hi, how are you?',
                 likesCount: 15,
             },
             {
                 id: 2,
-                messages: "It's my first post are you?",
+                message: "It's my first post are you?",
                 likesCount: 20,
             },
         ],
@@ -69,5 +69,17 @@ let state = {
 
     }
 };
+
+export let addPost = (postMessage) => {
+    debugger;
+    let newPost = {
+        id: 3,
+        message: postMessage,
+        likesCount: 0
+    };
+
+    state.profilePage.postsData.push(newPost);
+};
+
 
 export default state;

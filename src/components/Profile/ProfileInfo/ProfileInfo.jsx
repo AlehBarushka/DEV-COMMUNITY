@@ -4,9 +4,9 @@ const ProfileInfo = (props) => {
   return (
     <div>
       <div>
-        <img src="https://picsum.photos/seed/picsum/1000/500" alt="" />
+        <img src="https://picsum.photos/seed/picsum/1000/500" alt="pic" />
       </div>
-      <div className={styles['description-block']}>ava+description</div>
+      <div className={ styles['description-block'] }>ava+description</div>
     </div>
   );
 };
