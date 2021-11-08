@@ -14,6 +14,7 @@ let state = {
                 likesCount: 20,
             },
         ],
+        newPostText: 'React-tutorial'
     },
     dialogsPage: {
         dialogsData: [
@@ -72,17 +73,21 @@ let state = {
     }
 };
 
-export let addPost = (postMessage) => {
+export let addPost = () => {
     let newPost = {
         id: 3,
-        message: postMessage,
+        message: state.profilePage.newPostText,
         likesCount: 0
     };
 
     state.profilePage.postsData.push(newPost);
+    state.profilePage.newPostText = '';
     rerenderEntireTree(state);
-
 };
 
+export let updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText;
+    rerenderEntireTree(state);
+};
 
 export default state;
