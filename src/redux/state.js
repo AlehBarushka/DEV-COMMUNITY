@@ -1,99 +1,99 @@
-let rerenderEntireTree = () => {
-    console.log('state wchanged');
-};
+let store = {
+    _state: {
+        profilePage: {
+            postsData: [
+                {
+                    id: 1,
+                    message: 'Hi, how are you?',
+                    likesCount: 15,
+                },
+                {
+                    id: 2,
+                    message: "It's my first post are you?",
+                    likesCount: 20,
+                },
+            ],
+            newPostText: 'React-tutorial'
+        },
+        dialogsPage: {
+            dialogsData: [
+                {
+                    id: 1,
+                    name: 'Oleg',
+                },
+                {
+                    id: 2,
+                    name: 'Alexander',
+                },
+                {
+                    id: 3,
+                    name: 'Sveta',
+                },
+                {
+                    id: 4,
+                    name: 'Dmitriy',
+                },
+                {
+                    id: 5,
+                    name: 'Dina',
+                },
+                {
+                    id: 6,
+                    name: 'Sandra',
+                },
+            ],
+            messagesData: [
+                {
+                    id: 1,
+                    message: 'Hi!',
+                },
+                {
+                    id: 2,
+                    message: 'How are you?',
+                },
+                {
+                    id: 3,
+                    message: 'Bitch!',
+                },
+                {
+                    id: 4,
+                    message: 'Hello!',
+                },
+                {
+                    id: 5,
+                    message: 'Yo!',
+                },
+                {
+                    id: 6,
+                    message: 'I am robot',
+                },
+            ]
 
-let state = {
-    profilePage: {
-        postsData: [
-            {
-                id: 1,
-                message: 'Hi, how are you?',
-                likesCount: 15,
-            },
-            {
-                id: 2,
-                message: "It's my first post are you?",
-                likesCount: 20,
-            },
-        ],
-        newPostText: 'React-tutorial'
+        }
     },
-    dialogsPage: {
-        dialogsData: [
-            {
-                id: 1,
-                name: 'Oleg',
-            },
-            {
-                id: 2,
-                name: 'Alexander',
-            },
-            {
-                id: 3,
-                name: 'Sveta',
-            },
-            {
-                id: 4,
-                name: 'Dmitriy',
-            },
-            {
-                id: 5,
-                name: 'Dina',
-            },
-            {
-                id: 6,
-                name: 'Sandra',
-            },
-        ],
-        messagesData: [
-            {
-                id: 1,
-                message: 'Hi!',
-            },
-            {
-                id: 2,
-                message: 'How are you?',
-            },
-            {
-                id: 3,
-                message: 'Bitch!',
-            },
-            {
-                id: 4,
-                message: 'Hello!',
-            },
-            {
-                id: 5,
-                message: 'Yo!',
-            },
-            {
-                id: 6,
-                message: 'I am robot',
-            },
-        ]
+    getState() { return this._state; },
+    _callSubscriber() {
+        console.log('state wchanged');
+    },
+    addPost() {
+        let newPost = {
+            id: 3,
+            message: this._state.profilePage.newPostText,
+            likesCount: 0
+        };
 
+        this._state.profilePage.postsData.push(newPost);
+        this._state.profilePage.newPostText = '';
+        this._callSubscriber(this._state);
+    },
+    updateNewPostText(newText) {
+        this._state.profilePage.newPostText = newText;
+        this._callSubscriber(this._state);
+    },
+    subscribe(observer) {
+        this._callSubscriber = observer;  //паттерн "наблюдатель" observer
     }
 };
 
-export let addPost = () => {
-    let newPost = {
-        id: 3,
-        message: state.profilePage.newPostText,
-        likesCount: 0
-    };
-
-    state.profilePage.postsData.push(newPost);
-    state.profilePage.newPostText = '';
-    rerenderEntireTree(state);
-};
-
-export let updateNewPostText = (newText) => {
-    state.profilePage.newPostText = newText;
-    rerenderEntireTree(state);
-};
-
-export const subscribe = (observer) => {
-    rerenderEntireTree = observer;  //паттерн "наблюдатель" observer
-};
-
-export default state;
+export default store;
+window.store = store;

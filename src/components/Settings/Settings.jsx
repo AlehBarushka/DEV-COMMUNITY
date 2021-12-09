@@ -1,4 +1,4 @@
-import styles from "./Settings.module.css";
+// import styles from "./Settings.module.css";
 
 const Settings = (props) => {
   return <div>Settings</div>;
