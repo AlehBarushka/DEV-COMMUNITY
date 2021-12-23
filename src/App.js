@@ -9,7 +9,7 @@ import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 
-function App(props) {
+const App = (props) => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -18,7 +18,7 @@ function App(props) {
         <div className="app-wrapper-content">
           <Route
             path="/profile"
-            render={ () => <Profile profilePage={ props.state.profilePage } addPost={ props.addPost } updateNewPostText={ props.updateNewPostText } /> }
+            render={ () => <Profile profilePage={ props.state.profilePage } dispatch={ props.dispatch } /> }
           />
           <Route
             path="/dialogs"
@@ -31,6 +31,6 @@ function App(props) {
       </div>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
