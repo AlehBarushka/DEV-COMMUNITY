@@ -14,7 +14,7 @@ let initialState = {
             likesCount: 20,
         },
     ],
-    newPostText: 'React-tutorial'
+    newPostText: ''
 };
 
 
