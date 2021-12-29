@@ -5,22 +5,18 @@ import App from './App';
 import store from './redux/redux-store';
 import StoreContext from './StoreContext';
 
-
-
 let rerenderEntireTree = (state) => {
-    ReactDOM.render(
-        <StoreContext.Provider value={ store }>
-            <App />
-        </StoreContext.Provider>,
-        document.getElementById('root')
-    );
+	ReactDOM.render(
+		<StoreContext.Provider value={store}>
+			<App />
+		</StoreContext.Provider>,
+		document.getElementById('root')
+	);
 };
 
 rerenderEntireTree(store.getState());
 
 store.subscribe(() => {
-    let state = store.getState();
-    rerenderEntireTree(state);
+	let state = store.getState();
+	rerenderEntireTree(state);
 });
-
-

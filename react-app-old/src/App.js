@@ -10,21 +10,21 @@ import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 
 const App = (props) => {
-  return (
-    <BrowserRouter>
-      <div className="app-wrapper">
-        <Header />
-        <Navbar />
-        <div className="app-wrapper-content">
-          <Route path="/profile" render={ () => (<Profile />) } />
-          <Route path="/dialogs" render={ () => (<DialogsContainer />) } />
-          <Route path="/news" render={ () => <News /> } />
-          <Route path="/music" render={ () => <Music /> } />
-          <Route path="/settings" render={ () => <Settings /> } />
-        </div>
-      </div>
-    </BrowserRouter>
-  );
+	return (
+		<BrowserRouter>
+			<div className='app-wrapper'>
+				<Header />
+				<Navbar />
+				<div className='app-wrapper-content'>
+					<Route path='/profile' render={() => <Profile />} />
+					<Route path='/dialogs' render={() => <DialogsContainer />} />
+					<Route path='/news' render={() => <News />} />
+					<Route path='/music' render={() => <Music />} />
+					<Route path='/settings' render={() => <Settings />} />
+				</div>
+			</div>
+		</BrowserRouter>
+	);
 };
 
 export default App;
