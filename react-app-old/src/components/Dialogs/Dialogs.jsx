@@ -5,11 +5,11 @@ import React from 'react';
 
 const Dialogs = (props) => {
 	let dialogsElements = props.state.dialogsData.map((dialog) => (
-		<DialogItem name={dialog.name} id={dialog.id} />
+		<DialogItem name={dialog.name} id={dialog.id} key={dialog.id} />
 	));
 
 	let messagesElements = props.state.messagesData.map((messages) => (
-		<Message message={messages.message} id={messages.id} />
+		<Message message={messages.message} id={messages.id} key={messages.id} />
 	));
 
 	let newMessage = props.state.newMessageText;
@@ -28,11 +28,7 @@ const Dialogs = (props) => {
 			<div className={styles['dialog-items']}>{dialogsElements}</div>
 			<div className={styles.messages}>
 				{messagesElements}
-				<textarea
-					value={newMessage}
-					onChange={onMessageChange}
-					placeholder="enter your message"
-				></textarea>
+				<textarea value={newMessage} onChange={onMessageChange} placeholder='enter your message'></textarea>
 				<div>
 					<button onClick={AddMessage}>Add Message</button>
 				</div>
