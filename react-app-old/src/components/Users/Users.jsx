@@ -1,43 +1,14 @@
 import React from 'react';
 import styles from './Users.module.css';
+import * as axios from 'axios';
+
+import unknowUser from '../../assets/img/unknowUser.jpg';
 
 const Users = (props) => {
 	if (props.users.length === 0) {
-		props.setUsers([
-			{
-				id: 1,
-				avatarUrl: 'https://icon-library.com/images/unknown-person-icon/unknown-person-icon-19.jpg',
-				fullName: 'Oleg',
-				status: 'busy',
-				followed: false,
-				location: {
-					city: 'Minsk',
-					country: 'Belarus',
-				},
-			},
-			{
-				id: 2,
-				avatarUrl: 'https://icon-library.com/images/unknown-person-icon/unknown-person-icon-19.jpg',
-				fullName: 'Igor',
-				status: 'Available',
-				followed: true,
-				location: {
-					city: 'Moscow',
-					country: 'Russia',
-				},
-			},
-			{
-				id: 3,
-				avatarUrl: 'https://icon-library.com/images/unknown-person-icon/unknown-person-icon-19.jpg',
-				fullName: 'Olya',
-				status: 'Do Not Disturb',
-				followed: false,
-				location: {
-					city: 'Kiev',
-					country: 'Ukraine',
-				},
-			},
-		]);
+		axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response) => {
+			props.setUsers(response.data.items);
+		});
 	}
 
 	return (
@@ -45,7 +16,7 @@ const Users = (props) => {
 			{props.users.map((user) => (
 				<div key={user.id}>
 					<div className={styles.ava}>
-						<img src={user.avatarUrl} alt={user.fullName} />
+						<img src={user.photos.small != null ? user.photos.small : unknowUser} alt={user.name} />
 					</div>
 					<div>
 						{user.followed ? (
@@ -66,10 +37,10 @@ const Users = (props) => {
 							</button>
 						)}
 					</div>
-					<div>{user.fullName}</div>
+					<div>{user.name}</div>
 					<div>{user.status}</div>
-					<div>{user.location.country}</div>
-					<div>{user.location.city}</div>
+					<div>{'user.location.country'}</div>
+					<div>{'user.location.city'}</div>
 				</div>
 			))}
 		</div>
