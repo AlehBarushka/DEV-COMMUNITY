@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // eslint-disable-next-line no-unused-vars
 import { followAC, setUsersAC, unfollowAC, toggleFollowAC } from '../../redux/users-reducer';
-import Users from './Users';
+import UsersClassComponent from './UsersClassComponent';
 
 const mapStateToProps = (state) => {
 	return {
@@ -28,6 +28,6 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
+const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersClassComponent);
 
 export default UsersContainer;
