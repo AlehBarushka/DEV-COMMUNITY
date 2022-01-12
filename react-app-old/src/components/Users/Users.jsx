@@ -1,21 +1,30 @@
 import React from 'react';
 import styles from './Users.module.css';
-import * as axios from 'axios';
 
 import unknowUser from '../../assets/img/unknowUser.jpg';
 
 const Users = (props) => {
-	const getUsers = () => {
-		if (props.users.length === 0) {
-			axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response) => {
-				props.setUsers(response.data.items);
-			});
-		}
-	};
+	let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+	let pagesArr = [];
 
+	for (let page = 1; page <= pagesCount; page++) {
+		pagesArr.push(page);
+	}
 	return (
 		<div>
-			<button onClick={getUsers}>Get users</button>
+			<div>
+				{pagesArr.map((page) => (
+					<span
+						key={page}
+						className={props.currentPage === page ? styles.selectedPage : null}
+						onClick={() => {
+							props.onPageChanged(page);
+						}}
+					>
+						{page}
+					</span>
+				))}
+			</div>
 			{props.users.map((user) => (
 				<div key={user.id}>
 					<div className={styles.ava}>
@@ -42,8 +51,6 @@ const Users = (props) => {
 					</div>
 					<div>{user.name}</div>
 					<div>{user.status}</div>
-					<div>{'user.location.country'}</div>
-					<div>{'user.location.city'}</div>
 				</div>
 			))}
 		</div>
