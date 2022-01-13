@@ -70,30 +70,37 @@ const mapStateToProps = (state) => {
 	};
 };
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		// toggleFollow: (userId) => {
-		// 	dispatch(toggleFollowAC(userId));
-		// },
-		follow: (userId) => {
-			dispatch(followAC(userId));
-		},
-		unfollow: (userId) => {
-			dispatch(unfollowAC(userId));
-		},
-		setUsers: (users) => {
-			dispatch(setUsersAC(users));
-		},
-		setTotalUsersCount: (totalCount) => {
-			dispatch(setTotalUsersCountAC(totalCount));
-		},
-		setCurrentPage: (pageNumber) => {
-			dispatch(setCurrentPageAC(pageNumber));
-		},
-		toggleIsFetching: (isFetching) => {
-			dispatch(toggleIsFetchingAC(isFetching));
-		},
-	};
-};
+// const mapDispatchToProps = (dispatch) => {
+// 	return {
+// 		// toggleFollow: (userId) => {
+// 		// 	dispatch(toggleFollowAC(userId));
+// 		// },
+// 		follow: (userId) => {
+// 			dispatch(followAC(userId));
+// 		},
+// 		unfollow: (userId) => {
+// 			dispatch(unfollowAC(userId));
+// 		},
+// 		setUsers: (users) => {
+// 			dispatch(setUsersAC(users));
+// 		},
+// 		setTotalUsersCount: (totalCount) => {
+// 			dispatch(setTotalUsersCountAC(totalCount));
+// 		},
+// 		setCurrentPage: (pageNumber) => {
+// 			dispatch(setCurrentPageAC(pageNumber));
+// 		},
+// 		toggleIsFetching: (isFetching) => {
+// 			dispatch(toggleIsFetchingAC(isFetching));
+// 		},
+// 	};
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, {
+	follow: followAC,
+	unfollow: unfollowAC,
+	setUsers: setUsersAC,
+	setTotalUsersCount: setTotalUsersCountAC,
+	setCurrentPage: setCurrentPageAC,
+	toggleIsFetching: toggleIsFetchingAC,
+})(UsersContainer);
