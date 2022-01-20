@@ -5,7 +5,7 @@ const instatnce = axios.create({
 	withCredentials: true,
 	baseURL: BASE_API_URL,
 	headers: {
-		'API-KEY': '62153aeb-b244-48ee-93b2-8fb0a723bcd6',
+		'API-KEY': '4868c336-9f43-428c-8a3f-6be5e472249f',
 	},
 });
 
@@ -15,5 +15,11 @@ export const usersAPI = {
 	},
 	getProfile(userId) {
 		return instatnce.get(`profile/${userId}`).then((response) => response.data);
+	},
+	unfollow(userId) {
+		return instatnce.delete(`follow/${userId}`).then((response) => response);
+	},
+	follow(userId) {
+		return instatnce.post(`follow/${userId}`).then((response) => response);
 	},
 };
