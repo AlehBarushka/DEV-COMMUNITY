@@ -1,3 +1,5 @@
+import { usersAPI } from '../api/api';
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 // const TOGGLE_FOLLOW = 'TOGGLE_FOLLOW';
@@ -12,7 +14,7 @@ let initialState = {
 	pageSize: 5,
 	totalUsersCount: 0,
 	currentPage: 1,
-	isFetching: true,
+	isFetching: false,
 	followingInProgress: [],
 };
 
@@ -118,5 +120,40 @@ export const toggleFollowingProgressAC = (followingProgress, userId) => ({
 	followingProgress,
 	userId,
 });
+
+export const getUsersThunkCreator = (currentPage, pageSize) => {
+	return (dispatch) => {
+		dispatch(toggleIsFetchingAC(true));
+		usersAPI.getUsers(currentPage, pageSize).then((response) => {
+			dispatch(toggleIsFetchingAC(false));
+			dispatch(setUsersAC(response.items));
+			dispatch(setTotalUsersCountAC(response.totalCount));
+		});
+	};
+};
+
+export const followThunkCreator = (userId) => {
+	return (dispatch) => {
+		dispatch(toggleFollowingProgressAC(true, userId));
+		usersAPI.follow(userId).then((response) => {
+			if (response.resultCode === 0) {
+				dispatch(followAC(userId));
+			}
+			dispatch(toggleFollowingProgressAC(false, userId));
+		});
+	};
+};
+
+export const unfollowThunkCreator = (userId) => {
+	return (dispatch) => {
+		dispatch(toggleFollowingProgressAC(true, userId));
+		usersAPI.unfollow(userId).then((response) => {
+			if (response.resultCode === 0) {
+				dispatch(unfollowAC(userId));
+			}
+			dispatch(toggleFollowingProgressAC(false, userId));
+		});
+	};
+};
 
 export default usersReducer;
