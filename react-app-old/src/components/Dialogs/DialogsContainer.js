@@ -1,6 +1,5 @@
-// eslint-disable-next-line no-unused-vars
-import React from 'react';
 import { connect } from 'react-redux';
+import { withAuthRedirect } from '../../hoc/WithAuthRedirect';
 import { updateNewMessageAC, sendMessageAC } from '../../redux/dialogs-reducer';
 
 import Dialogs from './Dialogs';
@@ -8,13 +7,14 @@ import Dialogs from './Dialogs';
 const mapStateToProps = (state) => {
 	return {
 		dialogsPage: state.dialogsPage,
-		isAuth: state.auth.isAuth,
 	};
 };
+
+const AuthRedirectComponent = withAuthRedirect(Dialogs);
 
 const DialogsContainer = connect(mapStateToProps, {
 	addMessage: sendMessageAC,
 	onMessageChange: updateNewMessageAC,
-})(Dialogs);
+})(AuthRedirectComponent);
 
 export default DialogsContainer;
