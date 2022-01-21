@@ -2,37 +2,39 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Users from './Users';
 import {
-	followAC,
-	setUsersAC,
-	unfollowAC,
 	// eslint-disable-next-line no-unused-vars
 	toggleFollowAC,
 	setCurrentPageAC,
-	setTotalUsersCountAC,
-	toggleIsFetchingAC,
 	toggleFollowingProgressAC,
+	getUsersThunkCreator,
+	unfollowThunkCreator,
+	followThunkCreator,
 } from '../../redux/users-reducer';
 
 import Preloader from '../Common/Preloader';
-import { usersAPI } from '../../api/api';
 
 class UsersContainer extends Component {
 	componentDidMount() {
-		this.props.toggleIsFetching(true);
-		usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((response) => {
-			this.props.toggleIsFetching(false);
-			this.props.setUsers(response.items);
-			this.props.setTotalUsersCount(response.totalCount);
-		});
+		this.props.getUsers(this.props.currentPage, this.props.pageSize);
+
+		//moved to reducer
+		// this.props.toggleIsFetching(true);
+		// usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((response) => {
+		// 	this.props.toggleIsFetching(false);
+		// 	this.props.setUsers(response.items);
+		// 	this.props.setTotalUsersCount(response.totalCount);
+		// });
 	}
 
 	onPageChanged = (pageNumber) => {
-		this.props.setCurrentPage(pageNumber);
-		this.props.toggleIsFetching(true);
-		usersAPI.getUsers(pageNumber, this.props.pageSize).then((response) => {
-			this.props.toggleIsFetching(false);
-			this.props.setUsers(response.items);
-		});
+		this.props.getUsers(pageNumber, this.props.pageSize);
+
+		// this.props.setCurrentPage(pageNumber);
+		// this.props.toggleIsFetching(true);
+		// usersAPI.getUsers(pageNumber, this.props.pageSize).then((response) => {
+		// 	this.props.toggleIsFetching(false);
+		// 	this.props.setUsers(response.items);
+		// });
 	};
 
 	render() {
@@ -82,11 +84,9 @@ const mapStateToProps = (state) => {
 // };
 
 export default connect(mapStateToProps, {
-	follow: followAC,
-	unfollow: unfollowAC,
-	setUsers: setUsersAC,
-	setTotalUsersCount: setTotalUsersCountAC,
+	follow: followThunkCreator,
+	unfollow: unfollowThunkCreator,
 	setCurrentPage: setCurrentPageAC,
-	toggleIsFetching: toggleIsFetchingAC,
 	toggleFollowingProgress: toggleFollowingProgressAC,
+	getUsers: getUsersThunkCreator,
 })(UsersContainer);
