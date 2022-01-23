@@ -15,8 +15,9 @@ export const usersAPI = {
 		return response.data;
 	},
 	async getProfile(userId) {
-		const response = await instatnce.get(`profile/${userId}`);
-		return response.data;
+		// backward compatibility method
+		console.warn('Obsolate method. Use profileAPI');
+		return profileAPI.getProfile(userId);
 	},
 	async unfollow(userId) {
 		const response = await instatnce.delete(`follow/${userId}`);
@@ -32,5 +33,21 @@ export const authAPI = {
 	async getAuth() {
 		const response = await instatnce.get(`auth/me`);
 		return response.data;
+	},
+};
+
+export const profileAPI = {
+	async getProfile(userId) {
+		const response = await instatnce.get(`profile/${userId}`);
+		return response.data;
+	},
+	async getStatus(userId) {
+		const response = await instatnce.get(`profile/status/${userId}`);
+		return response.data;
+	},
+	async updateStatus(status) {
+		return await instatnce.put(`profile/status/`, {
+			status,
+		});
 	},
 };
