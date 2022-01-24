@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
-import { withAuthRedirect } from '../../hoc/WithAuthRedirect';
+// import { withAuthRedirect } from '../../hoc/WithAuthRedirect';
 import {
 	getUserProfileThunkCreator,
 	getUserStatusThunkCreator,
@@ -35,6 +35,6 @@ export default compose(
 		getUserStatus: getUserStatusThunkCreator,
 		updateUserStatus: updateUserStatusThunkCreator,
 	}),
-	withRouter,
-	withAuthRedirect
+	withRouter
+	// withAuthRedirect
 )(ProfileConteiner);
