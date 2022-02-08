@@ -2,8 +2,7 @@ import styles from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import React from 'react';
-import { Redirect } from 'react-router-dom';
-import DialogsInput from './DialogsInput';
+import { Navigate } from 'react-router-dom';
 
 const Dialogs = (props) => {
 	let dialogsElements = props.dialogsPage.dialogsData.map((dialog) => (
@@ -13,7 +12,6 @@ const Dialogs = (props) => {
 	let messagesElements = props.dialogsPage.messagesData.map((messages) => (
 		<Message message={messages.message} id={messages.id} key={messages.id} />
 	));
-	debugger;
 
 	let newMessage = props.dialogsPage.newMessageText;
 
@@ -26,17 +24,16 @@ const Dialogs = (props) => {
 		props.onMessageChange(newText);
 	};
 
-	if (!props.isAuth) return <Redirect to='/login' />;
+	if (!props.isAuth) return <Navigate to='/login' />;
 
 	return (
 		<div className={styles.dialogs}>
 			<div className={styles['dialog-items']}>{dialogsElements}</div>
 			<div className={styles.messages}>{messagesElements}</div>
-			{/* <textarea value={newMessage} onChange={onMessageChange} placeholder='enter your message'></textarea>
+			<textarea value={newMessage} onChange={onMessageChange} placeholder='enter your message'></textarea>
 			<div>
 				<button onClick={AddMessage}>Add Message</button>
-			</div> */}
-			<DialogsInput />
+			</div>
 		</div>
 	);
 };

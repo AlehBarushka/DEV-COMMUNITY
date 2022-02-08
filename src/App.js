@@ -1,5 +1,4 @@
-import { Route } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import './App.css';
 
@@ -14,20 +13,22 @@ import UsersContainer from './components/Users/UsersContainer';
 
 const App = (props) => {
 	return (
-		<BrowserRouter>
+		<Router>
 			<div className='app-wrapper'>
 				<HeaderContainer />
 				<Navbar />
 				<div className='app-wrapper-content'>
-					<Route path='/profile/:userId?' render={() => <ProfileConteiner />} />
-					<Route path='/dialogs' render={() => <DialogsContainer />} />
-					<Route path='/users' render={() => <UsersContainer />} />
-					<Route path='/news' render={() => <News />} />
-					<Route path='/settings' render={() => <Settings />} />
-					<Route path='/login' render={() => <Login />} />
+					<Routes>
+						<Route path='/profile/:userId?' element={<ProfileConteiner />} />
+						<Route path='/dialogs' element={<DialogsContainer />} />
+						<Route path='/users' element={<UsersContainer />} />
+						<Route path='/news' element={<News />} />
+						<Route path='/settings' element={<Settings />} />
+						<Route path='/login' element={<Login />} />
+					</Routes>
 				</div>
 			</div>
-		</BrowserRouter>
+		</Router>
 	);
 };
 
