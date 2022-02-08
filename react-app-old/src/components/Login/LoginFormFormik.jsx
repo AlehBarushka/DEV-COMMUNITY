@@ -1,10 +1,9 @@
 import { Component } from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { authAPI } from '../../api/api';
+// import { authAPI } from '../../api/api';
 
 class LoginFormFormik extends Component {
-	login = (values) => authAPI.getLogin(values);
 	render() {
 		const validationsSchema = yup
 			.object()
@@ -18,7 +17,7 @@ class LoginFormFormik extends Component {
 				}}
 				validateOnBlur
 				validationSchema={validationsSchema}
-				onSubmit={this.login}
+				onSubmit={(values) => console.log(values)}
 			>
 				{({ values, errors, touched, handleBlur, handleChange, isValid, handleSubmit, dirty }) => {
 					return (

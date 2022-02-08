@@ -3,6 +3,7 @@ import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import DialogsInput from './DialogsInput';
 
 const Dialogs = (props) => {
 	let dialogsElements = props.dialogsPage.dialogsData.map((dialog) => (
@@ -12,6 +13,7 @@ const Dialogs = (props) => {
 	let messagesElements = props.dialogsPage.messagesData.map((messages) => (
 		<Message message={messages.message} id={messages.id} key={messages.id} />
 	));
+	debugger;
 
 	let newMessage = props.dialogsPage.newMessageText;
 
@@ -29,13 +31,12 @@ const Dialogs = (props) => {
 	return (
 		<div className={styles.dialogs}>
 			<div className={styles['dialog-items']}>{dialogsElements}</div>
-			<div className={styles.messages}>
-				{messagesElements}
-				<textarea value={newMessage} onChange={onMessageChange} placeholder='enter your message'></textarea>
-				<div>
-					<button onClick={AddMessage}>Add Message</button>
-				</div>
-			</div>
+			<div className={styles.messages}>{messagesElements}</div>
+			{/* <textarea value={newMessage} onChange={onMessageChange} placeholder='enter your message'></textarea>
+			<div>
+				<button onClick={AddMessage}>Add Message</button>
+			</div> */}
+			<DialogsInput />
 		</div>
 	);
 };
