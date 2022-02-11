@@ -1,20 +1,16 @@
 .nav {
-  grid-area: nav;
-  background-color: rgba(172, 214, 214, 0.692);
-  padding: 10px;
+	grid-area: nav;
+	background-color: rgba(172, 214, 214, 0.692);
+	padding: 10px;
 }
 
 .item a {
-  font-size: 18px;
-  text-decoration: none;
-  color: rgb(33, 59, 75);
-  display: block;
-  margin: 5px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
-  border-radius: 5px;
-  padding: 5px;
-}
-
-.item a.active {
-  color: rgb(117, 54, 48);
+	font-size: 18px;
+	text-decoration: none;
+	color: rgb(33, 59, 75);
+	display: block;
+	margin: 5px;
+	box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+	border-radius: 5px;
+	padding: 5px;
 }

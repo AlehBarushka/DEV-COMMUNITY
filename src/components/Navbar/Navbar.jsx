@@ -5,23 +5,23 @@ const Navbar = () => {
 	return (
 		<nav className={styles.nav}>
 			<div className={styles.item}>
-				<Link to='/profile' activeClassName={styles.active}>
+				<Link to='/profile' className={styles}>
 					Profile
 				</Link>
 			</div>
 			<div className={styles.item}>
-				<Link to='/dialogs' activeClassName={styles.active}>
+				<Link to='/dialogs' className={styles}>
 					Messages
 				</Link>
 			</div>
 			<div className={styles.item}>
-				<Link to='/users' activeClassName={styles.active}>
+				<Link to='/users' className={styles}>
 					Users
 				</Link>
 			</div>
 
 			<div className={styles.item}>
-				<Link to='/settings' activeClassName={styles.active}>
+				<Link to='/settings' className={styles}>
 					Settings
 				</Link>
 			</div>
