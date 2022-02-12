@@ -1,58 +1,44 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 
-export default class ProfileStatus extends Component {
-	state = {
-		editMode: false,
-		status: this.props.status,
-	};
+const ProfileStatus = (props) => {
+	const [editMode, setEditMode] = useState(false);
+	const [status, setStatus] = useState(props.status);
 
-	componentDidUpdate(prevProps) {
-		if (prevProps.status !== this.props.status) {
-			this.setState({
-				status: this.props.status,
-			});
+	// componentDidUpdate()
+	useEffect(() => {
+		if (status !== props.status) {
+			setStatus(props.status);
 		}
-	}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [props.status]);
 
-	activateEditMode = () => {
-		this.setState({
-			editMode: true,
-		});
+	const activateEditMode = () => {
+		setEditMode(true);
 	};
 
-	deactivateEditMode = () => {
-		this.setState({
-			editMode: false,
-		});
-		this.props.updateStatus(this.state.status);
+	const deactivateEditMode = () => {
+		setEditMode(false);
+		props.updateStatus(status);
 	};
 
-	onStatusChange = (e) => {
+	const onStatusChange = (e) => {
 		const statusText = e.target.value;
-		this.setState({
-			status: statusText,
-		});
+		setStatus(statusText);
 	};
 
-	render() {
-		return (
-			<div>
-				{!this.state.editMode ? (
-					<div>
-						<span onDoubleClick={this.activateEditMode}>{this.props.status || '---'}</span>
-					</div>
-				) : (
-					<div>
-						<input
-							type='text'
-							onChange={this.onStatusChange}
-							autoFocus={true}
-							onBlur={this.deactivateEditMode}
-							value={this.state.status}
-						/>
-					</div>
-				)}
-			</div>
-		);
-	}
-}
+	return (
+		<div>
+			{!editMode ? (
+				<div>
+					<span onDoubleClick={activateEditMode}>{props.status || '---'}</span>
+				</div>
+			) : (
+				<div>
+					<input type='text' onChange={onStatusChange} autoFocus={true} onBlur={deactivateEditMode} value={status} />
+				</div>
+			)}
+		</div>
+	);
+};
+
+export default ProfileStatus;
