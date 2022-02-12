@@ -4,7 +4,7 @@ import './App.css';
 
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
-import Login from './components/Login/Login';
+import Login from './components/Login/index';
 import Navbar from './components/Navbar/Navbar';
 import News from './components/News/News';
 import ProfileConteiner from './components/Profile/ProfileContainer';
@@ -22,8 +22,6 @@ const App = (props) => {
 						<Route exact path='/profile' element={<ProfileConteiner />}>
 							<Route path=':userId' element={<ProfileConteiner />} />
 						</Route>
-						{/* <Route exact path='/profile/:userId' element={<ProfileConteiner />} /> */}
-
 						<Route path='/dialogs' element={<DialogsContainer />} />
 						<Route path='/users' element={<UsersContainer />} />
 						<Route path='/news' element={<News />} />
