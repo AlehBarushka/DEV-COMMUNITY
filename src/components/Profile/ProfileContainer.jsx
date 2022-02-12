@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { compose } from 'redux';
+import { withAuthRedirect } from '../../hoc/WithAuthRedirect';
 
 import {
 	getUserProfileThunkCreator,
@@ -20,6 +22,7 @@ export const ProfileContainer = (props) => {
 		}
 		props.getUserProfile(id);
 		props.getUserStatus(id);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [params.userId]);
 
 	return <Profile {...props} />;
@@ -29,8 +32,11 @@ const mapStateToProps = (state) => {
 	return { profile: state.profilePage.profile, status: state.profilePage.status };
 };
 
-export default connect(mapStateToProps, {
-	getUserProfile: getUserProfileThunkCreator,
-	getUserStatus: getUserStatusThunkCreator,
-	updateUserStatus: updateUserStatusThunkCreator,
-})(ProfileContainer);
+export default compose(
+	connect(mapStateToProps, {
+		getUserProfile: getUserProfileThunkCreator,
+		getUserStatus: getUserStatusThunkCreator,
+		updateUserStatus: updateUserStatusThunkCreator,
+	}),
+	withAuthRedirect
+)(ProfileContainer);
