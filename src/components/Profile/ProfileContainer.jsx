@@ -8,7 +8,7 @@ import {
 	getUserProfileThunkCreator,
 	getUserStatusThunkCreator,
 	updateUserStatusThunkCreator,
-} from '../../redux/profile-reducer';
+} from '../../reducers/profile-reducer';
 
 import Profile from './Profile';
 

@@ -22,22 +22,6 @@ const LoginForm = (props) => {
 				</Form>
 			)}
 		</Formik>
-		// <>
-		// 	<form>
-		// 		<div>
-		// 			<input type='text' placeholder='Login' />
-		// 		</div>
-		// 		<div>
-		// 			<input type='text' placeholder='Password' />
-		// 		</div>
-		// 		<div>
-		// 			<input type='checkbox' /> Remember me
-		// 		</div>
-		// 		<div>
-		// 			<button>Login</button>
-		// 		</div>
-		// 	</form>
-		// </>
 	);
 };
 

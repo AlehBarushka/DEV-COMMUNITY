@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getAuthUserDataThunkCreator } from '../../redux/auth-reducer';
+import { getAuthUserDataThunkCreator } from '../../reducers/auth-reducer';
 import Header from './Header';
 
 const HeaderContainer = (props) => {
 	useEffect(() => {
 		props.getAuthUserData();
-	}, [props]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	return <Header {...props} />;
 };
 
