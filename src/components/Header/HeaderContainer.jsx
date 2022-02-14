@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getAuthUserDataThunkCreator } from '../../reducers/auth-reducer';
+import { getAuthUserDataThunkCreator } from '../../actions';
+
 import Header from './Header';
 
 const HeaderContainer = (props) => {

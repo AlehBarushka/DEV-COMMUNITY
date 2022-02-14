@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Users from './Users';
+
 import {
-	// eslint-disable-next-line no-unused-vars
-	toggleFollowAC,
+	followThunkCreator,
+	getUsersThunkCreator,
 	setCurrentPageAC,
 	toggleFollowingProgressAC,
-	getUsersThunkCreator,
 	unfollowThunkCreator,
-	followThunkCreator,
-} from '../../reducers/users-reducer';
+} from '../../actions';
 
 import Preloader from '../Common/Preloader';
+import Users from './Users';
 
 class UsersContainer extends Component {
 	componentDidMount() {

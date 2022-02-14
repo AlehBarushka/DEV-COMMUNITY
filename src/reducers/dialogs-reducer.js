@@ -1,5 +1,4 @@
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
-const SEND_MESSAGE = 'SEND-MESSAGE';
+import { SEND_MESSAGE, UPDATE_NEW_MESSAGE_TEXT } from '../actions/constants';
 
 let initialState = {
 	dialogsData: [
@@ -82,13 +81,5 @@ const dialogsReducer = (state = initialState, action) => {
 			return state;
 	}
 };
-
-export const sendMessageAC = () => ({
-	type: SEND_MESSAGE,
-});
-export const updateNewMessageAC = (text) => ({
-	type: UPDATE_NEW_MESSAGE_TEXT,
-	newText: text,
-});
 
 export default dialogsReducer;

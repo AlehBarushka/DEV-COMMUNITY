@@ -2,13 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { compose } from 'redux';
+import { getUserProfileThunkCreator, getUserStatusThunkCreator, updateUserStatusThunkCreator } from '../../actions';
 import { withAuthRedirect } from '../../hoc/WithAuthRedirect';
-
-import {
-	getUserProfileThunkCreator,
-	getUserStatusThunkCreator,
-	updateUserStatusThunkCreator,
-} from '../../reducers/profile-reducer';
 
 import Profile from './Profile';
 
