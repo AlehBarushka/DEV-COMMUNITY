@@ -1,4 +1,4 @@
-import { Field, Form, Formik } from 'formik';
+import { useFormik } from 'formik';
 import React from 'react';
 
 const LoginForm = () => {
@@ -6,22 +6,43 @@ const LoginForm = () => {
 		console.log(values);
 	};
 
+	const formik = useFormik({
+		initialValues: {
+			login: '',
+			password: '',
+			rememberMe: false,
+		},
+		onSubmit: signIn,
+	});
+
 	return (
-		<Formik initialValues={{ email: '', password: '', checked: false }} onSubmit={signIn}>
-			{({ errors, touched }) => (
-				<Form>
-					<label htmlFor='email'>Email</label>
-					<Field type='text' name='email' placeholder='email' />
-					{errors.email && <div>{errors.email}</div>}
-					<label htmlFor='password'>Password</label>
-					<Field type='password' name='password' placeholder='password' />
-					{touched.password && errors.password && <div>{errors.password}</div>}
-					<label htmlFor='checked'>Remember me</label>
-					<Field type='checkbox' name='checked' placeholder='password' />
-					<button type='submit'>Войти</button>
-				</Form>
-			)}
-		</Formik>
+		<form onSubmit={formik.handleSubmit}>
+			<input
+				type='text'
+				onChange={formik.handleChange}
+				value={formik.values.login}
+				name='login'
+				placeholder='login'
+			/>
+			<br />
+			<input
+				type='password'
+				name='password'
+				placeholder='password'
+				onChange={formik.handleChange}
+				value={formik.values.password}
+			/>
+			<br />
+			<label htmlFor='rememberMe'>Remember me</label>
+			<input
+				type='checkbox'
+				name='rememberMe'
+				onChange={formik.handleChange}
+				value={formik.values.rememberMe}
+			/>
+			<br />
+			<button type='submit'>Submit</button>
+		</form>
 	);
 };
 
