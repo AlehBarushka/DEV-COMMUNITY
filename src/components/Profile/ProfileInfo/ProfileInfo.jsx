@@ -4,18 +4,16 @@ import Preloader from '../../Common/Preloader';
 import ProfileStatus from './ProfileStatus';
 
 const ProfileInfo = (props) => {
-	if (!props.profile) {
+	const { profile, status, updateStatus } = props;
+
+	if (!profile) {
 		return <Preloader />;
 	}
+
 	return (
-		<div>
-			{/* <div>
-				<img src='https://picsum.photos/seed/picsum/1000/500' alt='pic' />
-			</div> */}
-			<div className={styles['description-block']}>
-				<img src={props.profile.photos.large} alt='ava' />
-				<ProfileStatus status={props.status} updateStatus={props.updateStatus} />
-			</div>
+		<div className={styles['description-block']}>
+			<img src={profile.photos.large} alt='ava' />
+			<ProfileStatus status={status} updateStatus={updateStatus} />
 		</div>
 	);
 };

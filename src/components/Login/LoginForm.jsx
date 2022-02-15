@@ -1,7 +1,7 @@
 import { Field, Form, Formik } from 'formik';
 import React from 'react';
 
-const LoginForm = (props) => {
+const LoginForm = () => {
 	const signIn = (values) => {
 		console.log(values);
 	};

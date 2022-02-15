@@ -5,12 +5,14 @@ import { getAuthUserDataThunkCreator } from '../../actions';
 import Header from './Header';
 
 const HeaderContainer = (props) => {
+	const { isAuth, getAuthUserData, login } = props;
+
 	useEffect(() => {
-		props.getAuthUserData();
+		getAuthUserData();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	return <Header {...props} />;
+	return <Header isAuth={isAuth} getAuthUserData={getAuthUserData} login={login} />;
 };
 
 const mapStateToProps = (state) => ({ isAuth: state.auth.isAuth, login: state.auth.login });

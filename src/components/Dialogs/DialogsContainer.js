@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
 
 export default compose(
 	connect(mapStateToProps, {
-		addMessage: sendMessageAC,
+		sendMessage: sendMessageAC,
 		onMessageChange: updateNewMessageAC,
 	}),
 	withAuthRedirect

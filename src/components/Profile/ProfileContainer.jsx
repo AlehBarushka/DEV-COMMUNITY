@@ -8,6 +8,8 @@ import { withAuthRedirect } from '../../hoc/WithAuthRedirect';
 import Profile from './Profile';
 
 export const ProfileContainer = (props) => {
+	const { getUserProfile, getUserStatus, profile, status, updateUserStatus } = props;
+
 	let params = useParams();
 
 	useEffect(() => {
@@ -15,12 +17,12 @@ export const ProfileContainer = (props) => {
 		if (!id) {
 			id = 21929;
 		}
-		props.getUserProfile(id);
-		props.getUserStatus(id);
+		getUserProfile(id);
+		getUserStatus(id);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [params.userId]);
 
-	return <Profile {...props} />;
+	return <Profile profile={profile} status={status} updateStatus={updateUserStatus} />;
 };
 
 const mapStateToProps = (state) => {
