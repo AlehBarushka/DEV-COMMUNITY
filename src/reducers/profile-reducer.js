@@ -1,4 +1,4 @@
-import { ADD_POST, SET_STATUS, SET_USER_PROFILE, UPDATE_NEW_POST_TEXT } from '../actions/constants';
+import { ADD_POST, SET_STATUS, SET_USER_PROFILE } from '../actions/constants';
 
 let initialState = {
 	postsData: [
@@ -13,7 +13,6 @@ let initialState = {
 			likesCount: 20,
 		},
 	],
-	newPostText: '',
 	profile: null,
 	status: '',
 };
@@ -24,20 +23,15 @@ const profileReducer = (state = initialState, action) => {
 		case ADD_POST: {
 			let newPost = {
 				id: 3,
-				message: state.newPostText,
+				message: action.payload,
 				likesCount: 0,
 			};
 			stateCopy = {
 				...state,
 				postsData: [...state.postsData, newPost],
-				newPostText: '',
 			};
 			return stateCopy;
 		}
-
-		case UPDATE_NEW_POST_TEXT:
-			stateCopy = { ...state, newPostText: action.newText };
-			return stateCopy;
 
 		case SET_USER_PROFILE:
 			stateCopy = { ...state, profile: action.profile };

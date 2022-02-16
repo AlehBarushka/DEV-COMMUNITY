@@ -1,14 +1,12 @@
 import { profileAPI, usersAPI } from '../api/api';
-import { ADD_POST, SET_STATUS, SET_USER_PROFILE, UPDATE_NEW_POST_TEXT } from './constants';
+import { ADD_POST, SET_STATUS, SET_USER_PROFILE } from './constants';
 
-export const addPostAC = () => ({ type: ADD_POST });
+export const addPostAC = (postText) => ({ type: ADD_POST, payload: postText });
 
-export const updateNewPostTextAC = (text) => ({
-	type: UPDATE_NEW_POST_TEXT,
-	newText: text,
+export const setUserProfileAC = (profile) => ({
+	type: SET_USER_PROFILE,
+	profile: profile,
 });
-
-export const setUserProfileAC = (profile) => ({ type: SET_USER_PROFILE, profile: profile });
 
 export const setStatusAC = (status) => ({
 	type: SET_STATUS,

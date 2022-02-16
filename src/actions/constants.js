@@ -1,10 +1,8 @@
 export const SET_AUTH_USER_DATA = 'SET_AUTH_USER_DATA';
 
-export const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
-export const SEND_MESSAGE = 'SEND-MESSAGE';
+export const SEND_MESSAGE = 'SEND_MESSAGE';
 
-export const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-export const ADD_POST = 'ADD-POST';
+export const ADD_POST = 'ADD_POST';
 export const SET_USER_PROFILE = 'SET_USER_PROFILE';
 export const SET_STATUS = 'SET_STATUS';
 

@@ -1,9 +1,6 @@
-import { SEND_MESSAGE, UPDATE_NEW_MESSAGE_TEXT } from './constants';
+import { SEND_MESSAGE } from './constants';
 
-export const sendMessageAC = () => ({
+export const sendMessageAC = (messageText) => ({
 	type: SEND_MESSAGE,
-});
-export const updateNewMessageAC = (text) => ({
-	type: UPDATE_NEW_MESSAGE_TEXT,
-	newText: text,
+	payload: messageText,
 });
