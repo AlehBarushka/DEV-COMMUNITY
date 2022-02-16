@@ -1,5 +1,6 @@
 import { useFormik } from 'formik';
 import React from 'react';
+import * as Yup from 'yup';
 
 const AddPostForm = (props) => {
 	const { addPost } = props;
@@ -8,11 +9,18 @@ const AddPostForm = (props) => {
 		addPost(data.postText);
 	};
 
+	const addPostValidation = Yup.object().shape({
+		postText: Yup.string()
+			.required('Пожалуйста, введите сообщение!')
+			.max(30, 'Максимальное кол-во символов 30!'),
+	});
+
 	const formik = useFormik({
 		initialValues: {
 			postText: '',
 		},
 		onSubmit: addNewPost,
+		validationSchema: addPostValidation,
 	});
 
 	return (
@@ -25,6 +33,7 @@ const AddPostForm = (props) => {
 				name='postText'
 				placeholder='add post...'
 			/>
+			{formik.errors.postText ? <div>{formik.errors.postText}</div> : null}
 			<br />
 			<button type='submit'>Add Post</button>
 		</form>
