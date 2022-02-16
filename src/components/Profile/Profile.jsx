@@ -5,11 +5,15 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 import React from 'react';
 
 const Profile = (props) => {
-	const { profile, status, updateStatus } = props;
+	const { profile, userStatus, updateStatus } = props;
 
 	return (
 		<div>
-			<ProfileInfo profile={profile} status={status} updateStatus={updateStatus} />
+			<ProfileInfo
+				profile={profile}
+				userStatus={userStatus}
+				updateStatus={updateStatus}
+			/>
 			<MyPostsContainer />
 		</div>
 	);
