@@ -1,10 +1,16 @@
 import { useFormik } from 'formik';
 import React from 'react';
+import * as Yup from 'yup';
 
 const LoginForm = () => {
 	const signIn = (values) => {
 		console.log(values);
 	};
+
+	const logInValidation = Yup.object().shape({
+		login: Yup.string().required('Please enter the login'),
+		password: Yup.string().required('Please enter the password'),
+	});
 
 	const formik = useFormik({
 		initialValues: {
@@ -13,6 +19,7 @@ const LoginForm = () => {
 			rememberMe: false,
 		},
 		onSubmit: signIn,
+		validationSchema: logInValidation,
 	});
 
 	return (
@@ -25,6 +32,7 @@ const LoginForm = () => {
 				placeholder='login'
 			/>
 			<br />
+			{formik.errors.login ? <div>{formik.errors.login}</div> : null}
 			<input
 				type='password'
 				name='password'
@@ -33,6 +41,9 @@ const LoginForm = () => {
 				value={formik.values.password}
 			/>
 			<br />
+			{formik.errors.password && formik.touched.password ? (
+				<div>{formik.errors.password}</div>
+			) : null}
 			<label htmlFor='rememberMe'>Remember me</label>
 			<input
 				type='checkbox'
